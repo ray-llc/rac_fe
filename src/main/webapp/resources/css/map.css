@@ -1,0 +1,88 @@
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+  /* Rectangle 168 */
+
+  position: absolute;
+  width: 574px;
+  height: 599px;
+  left: 168px;
+  top: 86px;
+
+  /* /Gray / White */
+  background: #FFFFFF;
+  /* Stroke/light */
+  border: 1px solid #DEE2E6;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+
+  /* Rectangle 169 */
+
+  position: absolute;
+  width: 574px;
+  height: 351px;
+  left: 168px;
+  top: 85px;
+
+  /* Secondary/Light Color */
+  background: #ABB5BE;
+  border-radius: 4px 4px 0px 0px;
+
+
+  /* This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. */
+
+  position: absolute;
+  width: 512px;
+  height: 108px;
+  left: 208px;
+  top: 532px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  /* Body Text / Base Color */
+  color: #68717A;
+
+
+  /* Last updated 3 mins ago */
+
+  position: absolute;
+  width: 233px;
+  height: 23px;
+  left: 208px;
+  top: 648px;
+
+  /* Body/Small */
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+
+  /* Secondary/Light Color */
+  color: #ABB5BE;
+
+
+  /* Card title */
+
+  position: absolute;
+  width: 206px;
+  height: 52px;
+  left: 208px;
+  top: 459px;
+
+  /* Semi-Bold / H3 Heading */
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+
+  /* Heading/Title Color */
+  color: #152536;
+
+}

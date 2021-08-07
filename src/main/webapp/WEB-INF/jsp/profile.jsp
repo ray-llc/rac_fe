@@ -17,9 +17,11 @@
                 <h3>${userTo.name} <spring:message code="${register ? 'app.register' : 'app.profile'}"/></h3>
                 <form:form class="form-group" modelAttribute="userTo" method="post" action="${register ? 'profile/register' : 'profile'}"
                            charset="utf-8" accept-charset="UTF-8">
-                    <rac:inputField labelCode="user.name" name="name"/>
+
+                    <rac:inputField labelCode="user.name" name="name" />
                     <rac:inputField labelCode="user.email" name="email"/>
                     <rac:inputField labelCode="user.password" name="password" inputType="password"/>
+
                     <div class="text-right">
                         <a class="btn btn-secondary" href="#" onclick="window.history.back()">
                             <span class="fa fa-close"></span>

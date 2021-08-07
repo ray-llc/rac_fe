@@ -19,7 +19,7 @@
                 <a class="btn btn-info mr-1" href="barriers"><spring:message code="app.barriers"/></a>
                 <a class="btn btn-info mr-1" href="map"><spring:message code="app.map"/></a>
                 <%--                <a class="btn btn-lg btn-info mt-2" href="profile/register"><spring:message code="app.register"/> &raquo;</a>--%>
-                <a class="btn btn-info mr-1" href="profile">${userTo.name} <spring:message code="app.profile"/></a>
+                <a class="btn btn-info mr-1" href="profile"><spring:message code="app.profile"/></a>
                 <button class="btn btn-primary my-1" type="submit">
                     <span class="fa fa-sign-out"></span>
                 </button>

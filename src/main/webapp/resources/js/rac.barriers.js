@@ -15,7 +15,6 @@ const ctx = {
 function enable(chkbox, id) {
   var enabled = chkbox.is(":checked");
 //  https://stackoverflow.com/a/22213543/548473
-  debugger;
   $.ajax({
     url: barrierAjaxUrl + id,
     type: "POST",

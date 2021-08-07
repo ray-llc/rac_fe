@@ -16,8 +16,10 @@ import ru.ray_llc.rac.web.SecurityUtil;
 public class ProfileUIController extends AbstractUserController {
 
   @GetMapping
+//  public String profile() {
   public String profile(ModelMap model) {
-    model.addAttribute("userTo", new UserTo());
+    model.addAttribute("userTo", SecurityUtil.get().getUserTo());
+//    SecurityUtil.get().getUserTo();
     return "profile";
   }
 

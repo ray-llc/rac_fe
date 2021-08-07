@@ -42,7 +42,6 @@ function deleteRow(id) {
 }
 
 function updateTableByData(data) {
-  debugger;
   ctx.datatableApi.clear().rows.add(data).draw();
 }
 

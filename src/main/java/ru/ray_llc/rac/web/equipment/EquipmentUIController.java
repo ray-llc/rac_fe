@@ -73,4 +73,10 @@ public class EquipmentUIController extends AbstractEquipmentController{
   return super.getFilter(ipAddress, address);
   }
 
+  @Override
+  @PostMapping("/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void enable(@PathVariable int id, @RequestParam boolean enabled) {
+    super.enable(id, enabled);
+  }
 }

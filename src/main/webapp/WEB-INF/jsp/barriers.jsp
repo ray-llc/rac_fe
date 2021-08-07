@@ -19,11 +19,11 @@
                     <div class="row">
                         <div class="col-md-2">
                             <label for="ip_address"><spring:message code="barriers.ip_address"/></label>
-                            <input class="form-control" name="ip_address" id="ip_address" autocomplete="off">
+                            <input class="form-control" name="ip_address" id="ipaddress" autocomplete="off">
                         </div>
                         <div class="col-md-7">
                             <label for="address"><spring:message code="barriers.address"/></label>
-                            <input class="form-control" name="address" id="address" autocomplete="off">
+                            <input class="form-control" name="address" id="addres" autocomplete="off">
                         </div>
                     </div>
                 </form>
@@ -48,6 +48,7 @@
             <thead>
             <tr>
                 <th><spring:message code="barriers.ip_address"/></th>
+                <th><spring:message code="barriers.active"/></th>
                 <th><spring:message code="barriers.address"/></th>
                 <th><spring:message code="barriers.name"/></th>
                 <th><spring:message code="barriers.description"/></th>
@@ -59,55 +60,67 @@
     </div>
 </div>
 
-<%--<div class="modal fade" tabindex="-1" id="editRow">--%>
-<%--    <div class="modal-dialog">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h4 class="modal-title" id="modalTitle"></h4>--%>
-<%--                <button type="button" class="close" data-dismiss="modal" onclick="closeNoty()">--%>
-<%--                    &times;--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                <form id="detailsForm">--%>
-<%--                    <input type="hidden" id="id" name="id">--%>
+<div class="modal fade" tabindex="-1" id="editRow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle"></h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="closeNoty()">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="detailsForm">
+                    <input type="hidden" id="id" name="id">
 
-<%--                    <div class="form-group">--%>
-<%--                        <label for="dateTime" class="col-form-label"><spring:message--%>
-<%--                                code="meal.dateTime"/></label>--%>
-<%--                        <input class="form-control" id="dateTime" name="dateTime" autocomplete="off"--%>
-<%--                               placeholder="<spring:message code="meal.dateTime"/>">--%>
-<%--                    </div>--%>
+                    <div class="form-group">
+                        <label for="ip_address" class="col-form-label"><spring:message
+                                code="barriers.ip_address"/></label>
+                        <input type="text" class="form-control" id="ip_address" name="ip_address"
+                               placeholder="<spring:message code="barriers.ip_address"/>">
+                    </div>
 
-<%--                    <div class="form-group">--%>
-<%--                        <label for="description" class="col-form-label"><spring:message--%>
-<%--                                code="meal.description"/></label>--%>
-<%--                        <input type="text" class="form-control" id="description" name="description"--%>
-<%--                               placeholder="<spring:message code="meal.description"/>">--%>
-<%--                    </div>--%>
+                    <div class="form-group">
+                        <label for="longitude" class="col-form-label"><spring:message code="barriers.longitude"/></label>
+                        <input type="text" class="form-control" id="longitude" name="longitude" placeholder="<spring:message code="barriers.longitude"/>">
+                    </div>
+                    <div class="form-group">
+                        <label for="latitude" class="col-form-label"><spring:message code="barriers.latitude"/></label>
+                        <input type="text" class="form-control" id="latitude" name="latitude" placeholder="<spring:message code="barriers.latitude"/>">
+                    </div>
 
-<%--                    <div class="form-group">--%>
-<%--                        <label for="calories" class="col-form-label"><spring:message--%>
-<%--                                code="meal.calories"/></label>--%>
-<%--                        <input type="number" class="form-control" id="calories" name="calories"--%>
-<%--                               placeholder="1000">--%>
-<%--                    </div>--%>
-<%--                </form>--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn btn-secondary" data-dismiss="modal"--%>
-<%--                        onclick="closeNoty()">--%>
-<%--                    <span class="fa fa-close"></span>--%>
-<%--                    <spring:message code="common.cancel"/>--%>
-<%--                </button>--%>
-<%--                <button type="button" class="btn btn-primary" onclick="save()">--%>
-<%--                    <span class="fa fa-check"></span>--%>
-<%--                    <spring:message code="common.save"/>--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+                    <div class="form-group">
+                        <label for="address" class="col-form-label"><spring:message code="barriers.address"/></label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="<spring:message code="barriers.address"/>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-form-label"><spring:message code="barriers.name"/></label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="<spring:message code="barriers.name"/>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-form-label"><spring:message code="barriers.description"/></label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="<spring:message code="barriers.description"/>">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="closeNoty()">
+                    <span class="fa fa-close"></span>
+                    <spring:message code="common.cancel"/>
+                </button>
+                <button type="button" class="btn btn-primary" onclick="save()">
+                    <span class="fa fa-check"></span>
+                    <spring:message code="common.save"/>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <jsp:include page="fragments/footer.jsp"/>
 </body>
 <jsp:include page="fragments/i18n.jsp">

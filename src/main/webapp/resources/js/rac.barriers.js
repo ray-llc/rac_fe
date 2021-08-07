@@ -12,6 +12,22 @@ const ctx = {
   }
 };
 
+function enable(chkbox, id) {
+  var enabled = chkbox.is(":checked");
+//  https://stackoverflow.com/a/22213543/548473
+  debugger;
+  $.ajax({
+    url: barrierAjaxUrl + id,
+    type: "POST",
+    data: "enabled=" + enabled
+  }).done(function () {
+    chkbox.closest("tr").attr("data-barrierExcess", enabled);
+    successNoty(enabled ? "common.enabled" : "common.disabled");
+  }).fail(function () {
+    $(chkbox).prop("checked", !enabled);
+  });
+}
+
 function clearFilter() {
   $("#filter")[0].reset();
   $.get(barrierAjaxUrl, updateTableByData);
@@ -44,38 +60,48 @@ $(function () {
         "paging": false,
         "info": true,
         "columns": [
-      {
-        "data": "ip_address"
-      },
-      {
-        "data": "address"
-      },
-      {
-        "data": "name"
-      },
-      {
-        "data": "description"
-      },
-      {
-        "render": renderEditBtn,
-        "defaultContent": "",
-        "orderable": false
-      },
-      {
-        "render": renderDeleteBtn,
-        "defaultContent": "",
-        "orderable": false
-      }
-    ],
-    "order": [
-      [
-        0,
-        "desc"
-      ]
-    ],
-    "createdRow": function (row, data, dataIndex) {
-      $(row).attr("data-barrierExcess", data.state);
-    }
-  })
+          {
+            "data": "ip_address"
+          },
+          {
+            "data": "enabled",
+            "render": function (data, type, row) {
+              if (type === "display") {
+                return "<input type='checkbox' " + (data ? "checked" : "")
+                    + " onclick='enable($(this)," + row.id + ");'/>";
+              }
+              return data;
+            }
+          },
+          {
+            "data": "address"
+          },
+          {
+            "data": "name"
+          },
+          {
+            "data": "description"
+          },
+          {
+            "render": renderEditBtn,
+            "defaultContent": "",
+            "orderable": false
+          },
+          {
+            "render": renderDeleteBtn,
+            "defaultContent": "",
+            "orderable": false
+          }
+        ],
+        "order": [
+          [
+            0,
+            "desc"
+          ]
+        ],
+        "createdRow": function (row, data, dataIndex) {
+          $(row).attr("data-barrierExcess", data.state);
+        }
+      })
   );
 });

@@ -48,30 +48,23 @@
                     <input type="hidden" id="id" name="id">
 
                     <div class="form-group">
-                        <label for="name" class="col-form-label"><spring:message
-                                code="user.name"/></label>
-                        <input type="text" class="form-control" id="name" name="name"
-                               placeholder="<spring:message code="user.name"/>">
+                        <label for="name" class="col-form-label"><spring:message code="user.name"/></label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="<spring:message code="user.name"/>">
                     </div>
 
                     <div class="form-group">
                         <label for="login" class="col-form-label"><spring:message code="user.login"/></label>
-                        <input type="text" class="form-control" id="login" name="login"
-                               placeholder="<spring:message code="user.login"/>">
+                        <input type="text" class="form-control" id="login" name="login" placeholder="<spring:message code="user.login"/>">
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="col-form-label"><spring:message
-                                code="user.email"/></label>
-                        <input type="email" class="form-control" id="email" name="email"
-                               placeholder="<spring:message code="user.email"/>">
+                        <label for="email" class="col-form-label"><spring:message code="user.email"/></label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="<spring:message code="user.email"/>">
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="col-form-label"><spring:message
-                                code="user.password"/></label>
-                        <input type="password" class="form-control" id="password" name="password"
-                               placeholder="<spring:message code="user.password"/>">
+                        <label for="password" class="col-form-label"><spring:message code="user.password"/></label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="user.password"/>">
                     </div>
                 </form>
             </div>

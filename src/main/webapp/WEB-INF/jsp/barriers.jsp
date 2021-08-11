@@ -74,10 +74,8 @@
                     <input type="hidden" id="id" name="id">
 
                     <div class="form-group">
-                        <label for="ip_address" class="col-form-label"><spring:message
-                                code="barriers.ip_address"/></label>
-                        <input type="text" class="form-control" id="ip_address" name="ip_address"
-                               placeholder="<spring:message code="barriers.ip_address"/>">
+                        <label for="ip_address" class="col-form-label"><spring:message code="barriers.ip_address"/></label>
+                        <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="<spring:message code="barriers.ip_address"/>">
                     </div>
 
                     <div class="form-group">

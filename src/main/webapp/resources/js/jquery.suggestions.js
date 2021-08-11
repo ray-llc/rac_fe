@@ -4235,8 +4235,12 @@ notificator
  * Methods related to CONSTRAINTS component
  */
 var optionsUsed$1 = {
-    constraints: null,
-    restrict_value: false
+    constraints: {      locations: {
+            locations: { region: "Краснодар" },
+            // region_fias_id: "d00e1013-16bd-4c09-b3d5-3cb09fc54bd8"
+        },
+    },
+    restrict_value: true
 };
 
 var fiasParamNames = [
@@ -4589,7 +4593,7 @@ var methods$5 = {
                 if (that.bounds.own.indexOf("city") > -1) {
                     delete parentData.city_fias_id;
                 }
-                params.locations = [parentData];
+                params.locations = { region: "Краснодар" }; // [parentData];
                 params.restrict_value = true;
             }
         } else {

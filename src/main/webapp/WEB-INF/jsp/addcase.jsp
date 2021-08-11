@@ -1,40 +1,62 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="fn" uri="http://rac.ray_llc.ru/functions" %>
+<%@ taglib prefix="rac" tagdir="/WEB-INF/tags" %>
+<%--<%@ taglib prefix="fn" uri="http://rac.ray_llc.ru/functions" %>--%>
 
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
-<head>
-    <link rel="stylesheet" type="text/css" href="resources/css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="resources/css/suggestions.css" />
+<link rel='stylesheet'
+      href='https://cdn.jsdelivr.net/npm/suggestions-jquery@latest/dist/css/suggestions.min.css'>
+<link rel="stylesheet" href="resources/css/style.css">
 
-    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-    <script src="resources/js/jquery.suggestions.js"></script>
-    <script src="resources/js/token.js"></script>
-    <script src="resources/js/code.js"></script>
-</head>
+
 <body>
+
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+
 <div class="jumbotron pt-4">
-<section class="container">
-    <h3>Новая заявка</h3>
-    <h5>Укажите адрес</h5>
-    <input id="suggestions" name="suggestions" type="text"
-           value="Краснодар фрунзе 143" />
-    <p>
-    <h5>Госномер спец.транспорта</h5>
-        <input id="gosnumber" name="gosnumber" type="text" />
-    <p>
-    <h5>Ответственный</h5>
-        <input id="phone" name="phone" type="text"/>
-    <p>
-    <p>
-        <a class="btn btn-outline-primary mr-1" id="fixData"><spring:message code="app.addcase"/></a>
-    </p>
-</section>
+    <section class="container">
+        <div class="row">
+            <div class="col-5 offset-3">
+                <form:form class="form-group" modelAttribute="taskTo" method="post"
+                           action="${'profile/tasks'}"
+                           charset="utf-8" accept-charset="UTF-8" id="detailsForm">
+
+                    <h4>Создание заявки</h4>
+                    <p>Ткните мышкой в дом на карте, чтобы увидеть адрес:</p>
+                    <p>Вы указали адрес: <span id="address"></span></p>
+                    <p>Широта:<span id="latitude"></span></p>
+                    <p>Долгота:<span id="longitude"></span></p>
+<%--                    <p><input type="text" id="address" name="address" placeholder="<spring:message code="tasks.address"/>"></p>--%>
+
+                    <p><input type="text" id="number_auto" name="number_auto" placeholder="<spring:message code="tasks.number_auto"/>"></p>
+                    <p><input type="text" id="phone" name="phone" placeholder="<spring:message code="tasks.phone"/>"></p>
+<%--                    <rac:inputField labelCode="tasks.number_auto" name="number_auto"/>--%>
+<%--                    <rac:inputField labelCode="tasks.phone" name="phone"/>--%>
+
+                    <div class="text-right">
+                        <a class="btn btn-secondary" href="#" onclick="window.history.back()">
+                            <span class="fa fa-close"></span>
+                            <spring:message code="common.cancel"/>
+                        </a>
+                        <button type="submit" class="btn btn-primary" onclick="save()">
+                            <span class="fa fa-check"></span>
+                            <spring:message code="common.save"/>
+                        </button>
+                    </div>
+                </form:form>
+            </div>
+            <div id="map" style="width: 1200px; height: 500px"></div>
+        </div>
+    </section>
 </div>
+<script src='https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=7821f2d1-fcc4-42b5-af8e-dfecc28a3beb'></script>
+<script src="resources/js/script.js"></script>
 
 <jsp:include page="fragments/footer.jsp"/>
 

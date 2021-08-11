@@ -13,7 +13,10 @@
             $region = $("#region"),
             $city = $("#city"),
             $street = $("#street"),
-            $house = $("#house");
+            $house = $("#house"),
+            $geo_lat = $("#geo_lat"),
+            $geo_lon = $("#geo_lon");
+
 
         // просто подсказки
         var suggestionsInstance = $suggestions.suggestions({
@@ -34,6 +37,16 @@
         $name.suggestions({
             token: token,
             type: "NAME"
+        });
+
+        $geo_lat.suggestions({
+            token: token,
+            type: "GEO_LAT"
+        });
+
+        $geo_lon.suggestions({
+            token: token,
+            type: "GEO_LON"
         });
 
         $email.suggestions({

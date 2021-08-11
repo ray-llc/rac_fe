@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="webjars/datetimepicker/2.5.20-1/jquery.datetimepicker.css">
     <link rel="shortcut icon" href="resources/images/icon-meal.png">
 
+    <link rel="stylesheet" type="text/css" href="resources/css/table.css" />
+
     <%--http://stackoverflow.com/a/24070373/548473--%>
     <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.min.js" defer></script>

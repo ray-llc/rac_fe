@@ -29,15 +29,13 @@
 
                     <h4>Создание заявки</h4>
                     <p>Ткните мышкой в дом на карте, чтобы увидеть адрес:</p>
-                    <p>Вы указали адрес: <span id="address"></span></p>
-                    <p>Широта:<span id="latitude"></span></p>
-                    <p>Долгота:<span id="longitude"></span></p>
-<%--                    <p><input type="text" id="address" name="address" placeholder="<spring:message code="tasks.address"/>"></p>--%>
-
+                    <p><input type="text" id="address" name="address" value=""  placeholder="<spring:message code="tasks.address"/>" size="50"></p>
+                    <p><input type="text" id="latitude" name="latitude" value="" placeholder="<spring:message code="tasks.latitude"/>">
+                    <input type="text" id="longitude" name="longitude" value="" placeholder="<spring:message code="tasks.longitude"/>"></p>
                     <p><input type="text" id="number_auto" name="number_auto" placeholder="<spring:message code="tasks.number_auto"/>"></p>
                     <p><input type="text" id="phone" name="phone" placeholder="<spring:message code="tasks.phone"/>"></p>
-<%--                    <rac:inputField labelCode="tasks.number_auto" name="number_auto"/>--%>
-<%--                    <rac:inputField labelCode="tasks.phone" name="phone"/>--%>
+
+                    <p><input type="hidden" id="name" name="name" value="name"></p>
 
                     <div class="text-right">
                         <a class="btn btn-secondary" href="#" onclick="window.history.back()">

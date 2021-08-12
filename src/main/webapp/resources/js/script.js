@@ -46,12 +46,23 @@ function loadAddress(lat, lon) {
 
 function showAddress(suggestion) {
   var address = suggestion.value;
-  if (suggestion.data.postal_code) {
-    // address = suggestion.data.postal_code + ", " + address;
-  }
-  $("#address").text(address);
-  $("#longitude").text(suggestion.data.geo_lon);
-  $("#latitude").text(suggestion.data.geo_lat);
+  // if (suggestion.data.postal_code) {
+  //   address = suggestion.data.postal_code + ", " + address;
+  // }
+  var fld = document.getElementById("address");
+  var x = document.getElementById("longitude");
+  var y = document.getElementById("latitude");
+
+  debugger;
+  fld.value = address;
+  fld.setAttribute("readonly", "true");
+  x.value = suggestion.data.geo_lon;
+  y.value = suggestion.data.geo_lat;
+  x.setAttribute("readonly", "true");
+  y.setAttribute("readonly", "true");
+
+  // $("#longitude").text(suggestion.data.geo_lon);
+  // $("#latitude").text(suggestion.data.geo_lat);
 }
 
 function geolocate(lat, lon) {

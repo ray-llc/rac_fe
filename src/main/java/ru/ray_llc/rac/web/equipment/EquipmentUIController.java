@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -64,6 +65,7 @@ public class EquipmentUIController extends AbstractEquipmentController{
     return ResponseEntity.ok().build();
   }
 
+
   @GetMapping("/filter")
   @JsonView(View.JsonUI.class)
   public List<Equipment> getFilter(
@@ -79,4 +81,12 @@ public class EquipmentUIController extends AbstractEquipmentController{
   public void enable(@PathVariable int id, @RequestParam boolean enabled) {
     super.enable(id, enabled);
   }
+
+  @Override
+  @PostMapping("/action/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void openOrClose(@PathVariable int id, @RequestParam boolean setAction) {
+    super.openOrClose(id, setAction);
+  }
+
 }

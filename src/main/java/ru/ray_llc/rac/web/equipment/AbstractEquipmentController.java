@@ -73,4 +73,8 @@ public abstract class AbstractEquipmentController {
     service.enable(id, enabled);
   }
 
+  public void openOrClose(int id, boolean setAction) {
+    log.info(setAction ? "open {}" : "close {}", id);
+  }
+
 }

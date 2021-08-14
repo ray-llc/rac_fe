@@ -27,6 +27,17 @@ function enable(chkbox, id) {
   });
 }
 
+function actionBarrier(id, action) {
+  $.ajax({
+    url: barrierAjaxUrl+"action/" + id,
+    type: "POST",
+    data: "setAction=" + action
+  }).done(
+    successNoty(action ? "common.openBarrier" : "common.closeBarrier")
+  ).fail(function () {
+  });
+}
+
 function clearFilter() {
   $("#filter")[0].reset();
   $.get(barrierAjaxUrl, updateTableByData);
@@ -80,6 +91,18 @@ $(function () {
           },
           {
             "data": "description"
+          },
+          {
+            "render": function (data, type, row) {
+                return "<span class='fa fa-unlock' onclick='actionBarrier(" + row.id + ",true);'></span>"
+              return data;
+            }
+          },
+          {
+            "render": function (data, type, row) {
+              return "<span class='fa fa-lock' onclick='actionBarrier(" + row.id + ",false);'></span>"
+              return data;
+            }
           },
           {
             "render": renderEditBtn,

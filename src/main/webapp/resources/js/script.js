@@ -9,8 +9,9 @@ ymaps.ready(init);
   var map;
 
 function init () {
+
   map = new ymaps.Map("map", {
-    center: [55.742245, 37.628056],
+    center: [45.03912, 38.981502],
     zoom: 16
   }, {
     searchControlProvider: 'yandex#search'
@@ -55,7 +56,7 @@ function showAddress(suggestion) {
 
   debugger;
   fld.value = address;
-  fld.setAttribute("readonly", "true");
+  // fld.setAttribute("readonly", "true");
   x.value = suggestion.data.geo_lon;
   y.value = suggestion.data.geo_lat;
   x.setAttribute("readonly", "true");

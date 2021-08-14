@@ -17,12 +17,16 @@
             <div class="card-body px-3">
                 <form id="filter">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-1">
                             <label for="ip_address"><spring:message code="barriers.ip_address"/></label>
+                        </div>
+                        <div class="col-2">
                             <input class="form-control" name="ip_address" id="ipaddress" autocomplete="off">
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-1">
                             <label for="address"><spring:message code="barriers.address"/></label>
+                        </div>
+                        <div class="col-8">
                             <input class="form-control" name="address" id="addres" autocomplete="off">
                         </div>
                     </div>
@@ -54,12 +58,15 @@
                 <th><spring:message code="barriers.description"/></th>
                 <th></th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
         </table>
     </div>
 </div>
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 <div class="modal fade" tabindex="-1" id="editRow">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -72,19 +79,34 @@
             <div class="modal-body">
                 <form id="detailsForm">
                     <input type="hidden" id="id" name="id">
+                    <input type="hidden" id="state" name="state">
 
                     <div class="form-group">
-                        <label for="ip_address" class="col-form-label"><spring:message code="barriers.ip_address"/></label>
-                        <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="<spring:message code="barriers.ip_address"/>">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="ip_address" class="col-form-label"><spring:message code="barriers.ip_address"/></label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="<spring:message code="barriers.ip_address"/>">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="longitude" class="col-form-label"><spring:message code="barriers.longitude"/></label>
-                        <input type="text" class="form-control" id="longitude" name="longitude" placeholder="<spring:message code="barriers.longitude"/>">
-                    </div>
-                    <div class="form-group">
-                        <label for="latitude" class="col-form-label"><spring:message code="barriers.latitude"/></label>
-                        <input type="text" class="form-control" id="latitude" name="latitude" placeholder="<spring:message code="barriers.latitude"/>">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="longitude" class="col-form-label"><spring:message code="barriers.longitude"/></label>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" id="longitude" name="longitude" placeholder="<spring:message code="barriers.longitude"/>">
+                            </div>
+                            <div class="col-2">
+                                <label for="latitude" class="col-form-label"><spring:message code="barriers.latitude"/></label>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" id="latitude" name="latitude" placeholder="<spring:message code="barriers.latitude"/>">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -101,6 +123,7 @@
                         <label for="description" class="col-form-label"><spring:message code="barriers.description"/></label>
                         <input type="text" class="form-control" id="description" name="description" placeholder="<spring:message code="barriers.description"/>">
                     </div>
+                    <div id="map" style="width: 470px; height: 370px"></div>
 
                 </form>
             </div>
@@ -118,6 +141,9 @@
         </div>
     </div>
 </div>
+
+<script src='https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=7821f2d1-fcc4-42b5-af8e-dfecc28a3beb'></script>
+<script src="resources/js/script.js"></script>
 
 <jsp:include page="fragments/footer.jsp"/>
 </body>

@@ -26,7 +26,7 @@ public class EquipmentTo  extends BaseTo implements Serializable {
 
   @NotBlank
   @Size(min = 2, max = 100)
-  protected String name;
+  protected String name = "RU22w";
 
   @NotBlank
   @Size(max = 255)

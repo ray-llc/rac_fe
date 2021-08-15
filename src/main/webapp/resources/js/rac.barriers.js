@@ -127,3 +127,7 @@ $(function () {
       })
   );
 });
+
+$( '#editRow' ).on( 'shown.bs.modal', function() {
+  setLableFromEditBarriers();
+} );

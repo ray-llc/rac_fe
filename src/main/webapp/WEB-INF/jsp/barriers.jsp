@@ -48,18 +48,19 @@
             <span class="fa fa-plus"></span>
             <spring:message code="common.add"/>
         </button>
-        <table class="table table-hover " id="datatable">
+<%--        table table-striped table-bordered--%>
+        <table class="table table-hover" id="datatable">
             <thead>
             <tr>
-                <th><spring:message code="barriers.ip_address"/></th>
-                <th><spring:message code="barriers.active"/></th>
-                <th><spring:message code="barriers.address"/></th>
-                <th><spring:message code="barriers.name"/></th>
-                <th><spring:message code="barriers.description"/></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th class="col-1"><spring:message code="barriers.ip_address"/></th>
+                <th class="col-1"><spring:message code="barriers.active"/></th>
+                <th class="col-4"><spring:message code="barriers.address"/></th>
+                <th class="col-1"><spring:message code="barriers.name"/></th>
+                <th class="col-2"><spring:message code="barriers.description"/></th>
+                <th class="col-1"></th>
+                <th class="col-1"></th>
+                <th class="col-1"></th>
+                <th class="col-1"></th>
             </tr>
             </thead>
         </table>
@@ -128,8 +129,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick="closeNoty()">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeNoty()">
                     <span class="fa fa-close"></span>
                     <spring:message code="common.cancel"/>
                 </button>

@@ -13,25 +13,51 @@ VALUES ('USER', 1000),
        ('ADMIN', 1001);
 
 INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
-VALUES ('name1', 'address1', '192.168.1.2', 11.4545, 12.4453, 'description1');
+VALUES ('RU22w', 'г Краснодар, ул Коммунаров, д 213', '192.168.1.2', 38.981718, 45.047482, 'description1');
 
 INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
-VALUES ('name2', 'address2', '192.168.1.3', 11.4545, 12.4453, 'description2');
+VALUES ('RU22w', 'г Краснодар, ул им. Чкалова, д 136', '192.168.1.3', 38.964686, 45.039948, 'description2');
 
 INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
-VALUES ('name3', 'address3', '192.168.1.4', 11.4545, 12.4453, 'description3');
+VALUES ('RU22w', 'г Краснодар, ул Брянская, д 53', '192.168.1.4', 38.9759788, 45.0573308, 'description3');
 
 INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
-VALUES ('name4', 'address4', '192.168.1.5', 11.4545, 12.4453, 'description4');
+VALUES ('RU22w', 'г Краснодар, ул Красных Партизан, д 565', '192.168.1.5', 38.974783, 45.049373, 'description4');
 
 INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
-VALUES ('name5', 'address5', '192.168.1.6', 11.4545, 12.4453, 'description5');
+VALUES ('RU22w', 'г Краснодар, ул Новокузнечная, д 166', '192.168.1.6', 39.0020334, 45.0373452, 'description5');
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, ул Березанская, д 50', '192.168.1.7', 38.997358, 45.034617, 'description5');
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, ул Иркутская, д 43', '192.168.1.8', 39.03595, 45.03084, 'description5');
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, ул им. Селезнева, д 177', '192.168.1.9', 39.039929, 45.024622, 'description5');
+
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, ул Алтайская, д 18', '192.168.1.10', 39.04114, 45.03131, 'description5');
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, ул им. Селезнева, д 179', '192.168.1.11', 39.04001, 45.024361, 'description5');
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, ул Сормовская, д 12/6', '192.168.1.12', 39.068531, 45.024195, 'description5');
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, 2-й Онежский проезд, д 12', '192.168.1.13', 39.072483, 45.02728, 'description5');
+
+INSERT INTO equipments (name, address, ip_address, longitude, latitude, description)
+VALUES ('RU22w', 'г Краснодар, 2-й Сормовский проезд, д 6', '192.168.1.14', 39.07631, 45.028973, 'description5');
+
 
 INSERT INTO gpio (equipments_id, name, direction, value, trigger)
-VALUES (1002, 'gpio_name', 'direction_gpio', 1, 'rising');
+VALUES (1002, 'gpio6', 'direction_gpio', 1, 'rising');
 
 
 INSERT INTO tasks (address, phone, number_auto,longitude, latitude)
-VALUES ('address1', '89182498619', 'a222ac123', 45.03547, 38.975313);
+VALUES ('г Краснодар, ул Старокубанская, д 127А', '89182498619', 'a222ac123', 39.049038, 45.02001);
 INSERT INTO tasks (address, phone, number_auto,longitude, latitude)
-VALUES ('address2', '89182498619', 'a333ac123', 45.03507, 38.975013);
+VALUES ('г Краснодар, 1-й Звездный проезд, д 26', '89182498619', 'a333ac123', 39.08169, 45.02914);

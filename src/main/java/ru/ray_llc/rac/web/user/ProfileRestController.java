@@ -36,6 +36,13 @@ public class ProfileRestController extends AbstractUserController {
     super.delete(authUserId());
   }
 
+  @PostMapping("/register/test")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void testPost(@RequestBody String phone) {
+//  public void testPost(@RequestParam("phone") String phone, @RequestParam String text) {
+    System.out.println("{{{"+phone + "}}}");
+  }
+
   @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
   public ResponseEntity<User> register(@Valid @RequestBody UserTo userTo) {

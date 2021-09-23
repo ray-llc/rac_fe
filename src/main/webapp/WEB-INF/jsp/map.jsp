@@ -10,6 +10,8 @@
 <body>
 
 <script type="text/javascript" src="resources/js/rac.common.js" defer></script>
+<%--<script type="text/javascript" src="resources/js/rac.map.js" defer></script>--%>
+
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
@@ -30,8 +32,8 @@
                 </table>
             </div>
             <div class="col-7">
-<%--                <img src="https://static-maps.yandex.ru/1.x/?l=map&pt=37.604,55.3,pmywl100~37.605,55.6,pmrdl100~37.604,55.1,pmywl88~37.605,55.9,pmrdl88"/>--%>
-    <div id="map" style="width: 700px; height: 800px"></div>
+                <%--                <img src="https://static-maps.yandex.ru/1.x/?l=map&pt=37.604,55.3,pmywl100~37.605,55.6,pmrdl100~37.604,55.1,pmywl88~37.605,55.9,pmrdl88"/>--%>
+                <div id="map" style="width: 700px; height: 800px"></div>
             </div>
         </div>
     </div>

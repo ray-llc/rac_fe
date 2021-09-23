@@ -4,6 +4,7 @@ package ru.ray_llc.rac.web.tasks;
  * @author Alexandr.Yakubov
  **/
 
+import static ru.ray_llc.rac.util.UserUtil.fromTo;
 import static ru.ray_llc.rac.util.ValidationUtil.assureIdConsistent;
 import static ru.ray_llc.rac.util.ValidationUtil.checkNew;
 
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.ray_llc.rac.model.Task;
 import ru.ray_llc.rac.service.TaskService;
+import ru.ray_llc.rac.to.TaskTo;
 import ru.ray_llc.rac.web.SecurityUtil;
 
 public abstract class AbstractTaskController {
@@ -40,17 +42,17 @@ public abstract class AbstractTaskController {
     return service.getAll();
   }
 
-  public Task create(Task task) {
+  public Task create(TaskTo task) {
     int userId = SecurityUtil.authUserId();
     log.info("create {} for user {}", task, userId);
     checkNew(task);
-    return service.create(task);
+    return service.create(fromTo(task));
   }
 
-  public void update(Task task, int id) {
+  public void update(TaskTo task, int id) {
     int userId = SecurityUtil.authUserId();
     log.info("update {} for user {}", task, userId);
     assureIdConsistent(task, id);
-    service.update(task);
+    service.update(fromTo(task));
   }
 }

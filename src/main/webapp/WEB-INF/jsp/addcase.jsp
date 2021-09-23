@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-5 offset-3">
                 <form:form class="form-group" modelAttribute="taskTo" method="post"
-                           action="${'profile/tasks'}"
+                           action="${'profile/tasks/'}"
                            charset="utf-8" accept-charset="UTF-8" id="detailsForm">
 
                     <h4>Создание заявки</h4>

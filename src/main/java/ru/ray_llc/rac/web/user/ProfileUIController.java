@@ -52,4 +52,6 @@ public class ProfileUIController extends AbstractUserController {
       return "redirect:/login?message=app.registered&username=" + userTo.getEmail();
     }
   }
+
+
 }

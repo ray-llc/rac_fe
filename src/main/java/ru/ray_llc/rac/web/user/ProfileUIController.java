@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import ru.ray_llc.rac.to.TaskTo;
 import ru.ray_llc.rac.to.UserTo;
 import ru.ray_llc.rac.web.SecurityUtil;
 
@@ -53,5 +54,16 @@ public class ProfileUIController extends AbstractUserController {
     }
   }
 
-
+  @PostMapping("/task")
+  public String saveTask(@Valid TaskTo taskTo, BindingResult result, SessionStatus status) {
+    if (result.hasErrors()) {
+      return "tasks";
+    }
+    if (taskTo.isNew()) {
+      super.create(taskTo);
+    } else {
+      super.update(taskTo, taskTo.getId());
+    }
+    return "redirect:/tasks";
+  }
 }

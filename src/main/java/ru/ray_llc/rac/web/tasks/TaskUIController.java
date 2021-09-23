@@ -58,14 +58,14 @@ public class TaskUIController extends AbstractTaskController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public ResponseEntity<String> createOrUpdate(TaskTo task, BindingResult result) {
+  public ResponseEntity<String> createOrUpdate(TaskTo taskTo, BindingResult result) {
     if (result.hasErrors()) {
       return ValidationUtil.getErrorResponse(result);
     }
-    if (task.isNew()) {
-      super.create(task);
+    if (taskTo.isNew()) {
+      super.create(taskTo);
     } else {
-      super.update(task, task.getId());
+      super.update(taskTo, taskTo.getId());
     }
     return ResponseEntity.ok().build();
   }

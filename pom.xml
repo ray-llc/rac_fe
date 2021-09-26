@@ -330,6 +330,17 @@
         <scope>provided</scope>
         <version>${tomcat.version}</version>
       </dependency>
+      <dependency>
+        <artifactId>postgresql</artifactId>
+        <groupId>org.postgresql</groupId>
+        <version>${postgresql.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>jul-to-slf4j</artifactId>
+        <groupId>org.slf4j</groupId>
+        <scope>runtime</scope>
+        <version>${slf4j.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -356,19 +367,6 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
-      <dependencies>
-        <dependency>
-          <artifactId>postgresql</artifactId>
-          <groupId>org.postgresql</groupId>
-          <version>${postgresql.version}</version>
-        </dependency>
-        <dependency>
-          <artifactId>jul-to-slf4j</artifactId>
-          <groupId>org.slf4j</groupId>
-          <scope>runtime</scope>
-          <version>${slf4j.version}</version>
-        </dependency>
-      </dependencies>
       <id>postgres</id>
     </profile>
   </profiles>

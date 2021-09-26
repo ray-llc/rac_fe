@@ -1,0 +1,2 @@
+call mvn -B -s settings.xml -DskipTests=true clean package
+call java -Dspring.profiles.active="jdbc,heroku" -DDATABASE_URL="postgres://rac_service:rac_service@localhost:5432/rac_fe" -jar target/dependency/webapp-runner.jar target/*.war

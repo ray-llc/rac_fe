@@ -75,7 +75,7 @@
             </dependencies>
             <systemProperties>
               <file.encoding>UTF-8</file.encoding>
-              <spring.profiles.active>postgres</spring.profiles.active>
+<!--              <spring.profiles.active>postgres</spring.profiles.active>-->
             </systemProperties>
           </container>
           <deployables>
@@ -314,6 +314,23 @@
       <scope>provided</scope>
       <version>1.18.20</version>
     </dependency>
+    <dependency>
+      <artifactId>tomcat-jdbc</artifactId>
+      <groupId>org.apache.tomcat</groupId>
+      <scope>provided</scope>
+      <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>postgresql</artifactId>
+      <groupId>org.postgresql</groupId>
+      <version>${postgresql.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>jul-to-slf4j</artifactId>
+      <groupId>org.slf4j</groupId>
+      <scope>runtime</scope>
+      <version>${slf4j.version}</version>
+    </dependency>
   </dependencies>
   <dependencyManagement>
     <dependencies>
@@ -323,12 +340,6 @@
         <scope>import</scope>
         <type>pom</type>
         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>tomcat-jdbc</artifactId>
-        <groupId>org.apache.tomcat</groupId>
-        <scope>provided</scope>
-        <version>${tomcat.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -340,38 +351,6 @@
 
   <packaging>war</packaging>
 
-  <profiles>
-    <profile>
-      <dependencies>
-        <dependency>
-          <artifactId>hsqldb</artifactId>
-          <groupId>org.hsqldb</groupId>
-          <version>2.5.1</version>
-        </dependency>
-      </dependencies>
-      <id>hsqldb</id>
-    </profile>
-
-    <profile>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <dependencies>
-        <dependency>
-          <artifactId>postgresql</artifactId>
-          <groupId>org.postgresql</groupId>
-          <version>${postgresql.version}</version>
-        </dependency>
-        <dependency>
-          <artifactId>jul-to-slf4j</artifactId>
-          <groupId>org.slf4j</groupId>
-          <scope>runtime</scope>
-          <version>${slf4j.version}</version>
-        </dependency>
-      </dependencies>
-      <id>postgres</id>
-    </profile>
-  </profiles>
 
   <properties>
     <assertj.version>3.19.0</assertj.version>

@@ -4,6 +4,51 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>rac_fe</artifactId>
 
+  <groupId>ru.ray_llc</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>Barriers Management</name>
+  <packaging>war</packaging>
+  <url>http://localhost/</url>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <assertj.version>3.19.0</assertj.version>
+    <ehcache.version>3.9.2</ehcache.version>
+    <hamcrest.version>2.2</hamcrest.version>
+
+    <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
+    <hibernate.version>5.4.28.Final</hibernate.version>
+    <jackson-json.version>2.12.2</jackson-json.version>
+    <java.version>15</java.version>
+    <javax-el.version>3.0.1-b06</javax-el.version>
+
+    <!-- Logging -->
+    <junit.jupiter.version>5.7.1</junit.jupiter.version>
+    <logback.version>1.2.3</logback.version>
+
+    <!--DB-->
+    <postgresql.version>42.2.18</postgresql.version>
+    <!--    Tests  -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <slf4j.version>1.7.30</slf4j.version>
+
+    <!-- Hibernate -->
+    <spring-data-jpa.version>2.4.5</spring-data-jpa.version>
+    <spring.security.version>5.4.1</spring.security.version>
+    <spring.version>5.3.4</spring.version>
+
+    <!--Cache-->
+    <tomcat.version>9.0.43</tomcat.version>
+
+    <!--webjars-->
+    <webjars-bootstrap.version>4.6.0-1</webjars-bootstrap.version>
+    <webjars-datatables.version>1.10.24</webjars-datatables.version>
+    <webjars-datetimepicker.version>2.5.20-1</webjars-datetimepicker.version>
+    <webjars-jquery.version>3.6.0</webjars-jquery.version>
+    <webjars-noty.version>3.1.4</webjars-noty.version>
+  </properties>
+
   <build>
     <defaultGoal>package</defaultGoal>
     <finalName>rac_fe</finalName>
@@ -54,8 +99,23 @@
       <!-- http://stackoverflow.com/questions/4305935/is-it-possible-to-supply-tomcat6s-context-xml-file-via-the-maven-cargo-plugin#4417945 -->
       <!-- https://codehaus-cargo.github.io/cargo/Tomcat+9.x.html -->
       <plugin>
+        <groupId>org.codehaus.cargo</groupId>
         <artifactId>cargo-maven3-plugin</artifactId>
+        <version>1.9.2</version>
         <configuration>
+          <container>
+            <containerId>tomcat9x</containerId>
+            <systemProperties>
+              <file.encoding>UTF-8</file.encoding>
+              <spring.profiles.active>tomcat,datajpa</spring.profiles.active>
+            </systemProperties>
+            <dependencies>
+              <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+              </dependency>
+            </dependencies>
+          </container>
           <configuration>
             <configfiles>
               <configfile>
@@ -65,32 +125,17 @@
               </configfile>
             </configfiles>
           </configuration>
-          <container>
-            <containerId>tomcat9x</containerId>
-            <dependencies>
-              <dependency>
-                <artifactId>postgresql</artifactId>
-                <groupId>org.postgresql</groupId>
-              </dependency>
-            </dependencies>
-            <systemProperties>
-              <file.encoding>UTF-8</file.encoding>
-<!--              <spring.profiles.active>postgres</spring.profiles.active>-->
-            </systemProperties>
-          </container>
           <deployables>
             <deployable>
-              <artifactId>rac_fe</artifactId>
-              <groupId>ru.ray_llc</groupId>
+              <groupId>ru.ray_llc.rac</groupId>
+              <artifactId>rac</artifactId>
+              <type>war</type>
               <properties>
                 <context>${project.build.finalName}</context>
               </properties>
-              <type>war</type>
             </deployable>
           </deployables>
         </configuration>
-        <groupId>org.codehaus.cargo</groupId>
-        <version>1.9.2</version>
       </plugin>
     </plugins>
   </build>
@@ -343,54 +388,4 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <groupId>ru.ray_llc</groupId>
-
-  <modelVersion>4.0.0</modelVersion>
-  <name>Calories Management</name>
-
-  <packaging>war</packaging>
-
-
-  <properties>
-    <assertj.version>3.19.0</assertj.version>
-    <ehcache.version>3.9.2</ehcache.version>
-    <hamcrest.version>2.2</hamcrest.version>
-
-    <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
-    <hibernate.version>5.4.28.Final</hibernate.version>
-    <jackson-json.version>2.12.2</jackson-json.version>
-    <java.version>15</java.version>
-    <javax-el.version>3.0.1-b06</javax-el.version>
-
-    <!-- Logging -->
-    <junit.jupiter.version>5.7.1</junit.jupiter.version>
-    <logback.version>1.2.3</logback.version>
-
-    <!--DB-->
-    <postgresql.version>42.2.18</postgresql.version>
-    <!--    Tests  -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <slf4j.version>1.7.30</slf4j.version>
-
-    <!-- Hibernate -->
-    <spring-data-jpa.version>2.4.5</spring-data-jpa.version>
-    <spring.security.version>5.4.1</spring.security.version>
-    <spring.version>5.3.4</spring.version>
-
-    <!--Cache-->
-    <tomcat.version>9.0.43</tomcat.version>
-
-    <!--webjars-->
-    <webjars-bootstrap.version>4.6.0-1</webjars-bootstrap.version>
-    <webjars-datatables.version>1.10.24</webjars-datatables.version>
-    <webjars-datetimepicker.version>2.5.20-1</webjars-datetimepicker.version>
-    <webjars-jquery.version>3.6.0</webjars-jquery.version>
-    <webjars-noty.version>3.1.4</webjars-noty.version>
-  </properties>
-
-  <url>http://localhost/</url>
-
-  <version>1.0-SNAPSHOT</version>
 </project>

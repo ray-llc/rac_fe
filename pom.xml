@@ -324,6 +324,12 @@
         <type>pom</type>
         <version>${spring.version}</version>
       </dependency>
+      <dependency>
+        <artifactId>tomcat-jdbc</artifactId>
+        <groupId>org.apache.tomcat</groupId>
+        <scope>provided</scope>
+        <version>${tomcat.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -355,12 +361,6 @@
           <artifactId>postgresql</artifactId>
           <groupId>org.postgresql</groupId>
           <version>${postgresql.version}</version>
-        </dependency>
-        <dependency>
-          <artifactId>tomcat-jdbc</artifactId>
-          <groupId>org.apache.tomcat</groupId>
-          <scope>provided</scope>
-          <version>${tomcat.version}</version>
         </dependency>
         <dependency>
           <artifactId>jul-to-slf4j</artifactId>

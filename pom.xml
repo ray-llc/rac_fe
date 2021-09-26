@@ -116,15 +116,6 @@
               </dependency>
             </dependencies>
           </container>
-          <configuration>
-            <configfiles>
-              <configfile>
-                <file>src/main/resources/tomcat/context.xml</file>
-                <todir>conf/Catalina/localhost/</todir>
-                <tofile>${project.build.finalName}.xml</tofile>
-              </configfile>
-            </configfiles>
-          </configuration>
           <deployables>
             <deployable>
               <groupId>ru.ray_llc.rac</groupId>

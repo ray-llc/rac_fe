@@ -4,10 +4,7 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 
-  <context-param>
-    <param-name>spring.profiles.default</param-name>
-    <param-value>postgres,datajpa</param-value>
-  </context-param>
+  <display-name>rac</display-name>
 
   <context-param>
     <param-name>contextConfigLocation</param-name>

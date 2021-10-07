@@ -6,7 +6,11 @@ package ru.ray_llc.rac.service;
 
 import static ru.ray_llc.rac.util.ValidationUtil.checkNotFoundWithId;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -14,12 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.ray_llc.rac.model.Equipment;
 import ru.ray_llc.rac.repository.EquipmentRepository;
+import ru.ray_llc.rac.to.TaskTo;
+import ru.ray_llc.rac.util.exception.IllegalRequestDataException;
 
 @Service
 @Transactional(readOnly = true)
 public class EquipmentService {
 
   private final EquipmentRepository repository;
+
+  @Autowired
+  private RequestService requestService;
 
   public EquipmentService(EquipmentRepository repository) {
     this.repository = repository;
@@ -67,5 +76,27 @@ public class EquipmentService {
     ipAddress = ipAddress == null ? "%%" : "%"+ipAddress+"%";
     address = address == null ? "%%" : "%"+address+"%";
     return repository.getFilter(ipAddress, address);
+  }
+
+  public void sendOpenClosePostRequest(int id, boolean setAction) {
+    Assert.notNull(id, "id must not be null");
+    Assert.notNull(setAction, "setAction must not be null");
+    List<String> params = new ArrayList<>();
+    params.add("{}");
+    HttpURLConnection response;
+    Integer respCode = 0;
+    String respMessage = "";
+    try{
+      response = requestService.PostRequest(params, setAction ? "http://localhost:8081/api/gate/open-gate/"+id:"http://localhost:8081/api/gate/close-gate/"+id);
+      respCode = response.getResponseCode();
+      respMessage = response.getResponseMessage();
+
+    } catch ( IOException e) {
+      throw new IllegalRequestDataException(e.getMessage());
+    }finally {
+      if(respCode >= 300) {
+        throw new IllegalRequestDataException(respMessage);
+      }
+    }
   }
 }

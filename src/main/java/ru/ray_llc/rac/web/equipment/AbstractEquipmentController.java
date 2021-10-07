@@ -15,6 +15,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.ray_llc.rac.model.Equipment;
 import ru.ray_llc.rac.service.EquipmentService;
+import ru.ray_llc.rac.service.TaskService;
 import ru.ray_llc.rac.web.SecurityUtil;
 
 public abstract class AbstractEquipmentController {
@@ -75,6 +76,7 @@ public abstract class AbstractEquipmentController {
 
   public void openOrClose(int id, boolean setAction) {
     log.info(setAction ? "open {}" : "close {}", id);
+    service.sendOpenClosePostRequest(id, setAction);
   }
 
 }

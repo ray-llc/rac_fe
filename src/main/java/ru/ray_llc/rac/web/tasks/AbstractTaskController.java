@@ -46,7 +46,9 @@ public abstract class AbstractTaskController {
     int userId = SecurityUtil.authUserId();
     log.info("create {} for user {}", task, userId);
     checkNew(task);
-    return service.create(fromTo(task));
+//    return service.create(fromTo(task));
+    return fromTo(service.sendPostRequest(task));
+
   }
 
   public void update(TaskTo task, int id) {

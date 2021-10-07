@@ -73,4 +73,13 @@ public class TaskTo   extends BaseTo implements Serializable {
         '}';
   }
 
+  public String toStringForPost() {
+  return "{"+
+      "\"address\":\"" + address +"\""+
+      ", \"phone\":\"" + phone +"\""+
+      ", \"numberAuto\":\"" + number_auto +"\""+
+      ", \"geoLocation\": {\"longitude\":" + longitude.toString() +
+      ", \"latitude\":" + latitude.toString() +
+      "}}";
+  }
 }

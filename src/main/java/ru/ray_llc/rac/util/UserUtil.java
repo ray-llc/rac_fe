@@ -5,6 +5,7 @@ import org.springframework.util.StringUtils;
 import ru.ray_llc.rac.model.Role;
 import ru.ray_llc.rac.model.Task;
 import ru.ray_llc.rac.model.User;
+import ru.ray_llc.rac.to.TaskIntegrationTo;
 import ru.ray_llc.rac.to.TaskTo;
 import ru.ray_llc.rac.to.UserTo;
 
@@ -29,6 +30,10 @@ public class UserUtil {
         task.getNumber_auto());
   }
 
+  public static Task fromTo(TaskIntegrationTo task) {
+    return new Task(task.getGeoLocation().getLongitude(), task.getGeoLocation().getLatitude(), task.getAddress(), task.getPhone(),
+        task.getNumberAuto());
+  }
 
   public static User updateFromTo(User user, UserTo userTo) {
     user.setName(userTo.getName());

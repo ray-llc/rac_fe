@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.ray_llc.rac.model.Equipment;
 import ru.ray_llc.rac.repository.EquipmentRepository;
-import ru.ray_llc.rac.to.TaskTo;
 import ru.ray_llc.rac.util.exception.IllegalRequestDataException;
 
 @Service
@@ -87,7 +86,7 @@ public class EquipmentService {
     Integer respCode = 0;
     String respMessage = "";
     try{
-      response = requestService.PostRequest(params, setAction ? "http://localhost:8081/api/gate/open-gate/"+id:"http://localhost:8081/api/gate/close-gate/"+id);
+      response = requestService.postRequest(params, setAction ? "http://localhost:8081/api/gate/open-gate/"+id:"http://localhost:8081/api/gate/close-gate/"+id);
       respCode = response.getResponseCode();
       respMessage = response.getResponseMessage();
 

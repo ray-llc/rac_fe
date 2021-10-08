@@ -6,7 +6,6 @@ package ru.ray_llc.rac.web.tasks;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.support.SessionStatus;
 import ru.ray_llc.rac.View;
 import ru.ray_llc.rac.model.Task;
 import ru.ray_llc.rac.to.TaskTo;
@@ -35,7 +33,7 @@ public class TaskUIController extends AbstractTaskController {
     return super.getAll();
   }
 
-//  @Override
+  //  @Override
   @GetMapping("/filter")
   @JsonView(View.JsonUI.class)
   public List<Task> getFilter() {

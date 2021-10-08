@@ -4,14 +4,9 @@ package ru.ray_llc.rac.to;
  * @author Alexandr.Yakubov
  **/
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.Getter;
@@ -20,7 +15,8 @@ import ru.ray_llc.rac.model.Gpio;
 
 @Getter
 @Setter
-public class EquipmentTo  extends BaseTo implements Serializable {
+public class EquipmentTo extends BaseTo implements Serializable {
+
   @Serial
   private static final long serialVersionUID = 121312322L;
 

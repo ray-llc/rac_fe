@@ -4,11 +4,9 @@ package ru.ray_llc.rac.to;
  * @author Alexandr.Yakubov
  **/
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TaskTo   extends BaseTo implements Serializable {
+public class TaskTo extends BaseTo implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 4421343332L;
@@ -74,12 +72,12 @@ public class TaskTo   extends BaseTo implements Serializable {
   }
 
   public String toStringForPost() {
-  return "{"+
-      "\"address\":\"" + address +"\""+
-      ", \"phone\":\"" + phone +"\""+
-      ", \"numberAuto\":\"" + number_auto +"\""+
-      ", \"geoLocation\": {\"longitude\":" + longitude.toString() +
-      ", \"latitude\":" + latitude.toString() +
-      "}}";
+    return "{" +
+        "\"address\":\"" + address + "\"" +
+        ", \"phone\":\"" + phone + "\"" +
+        ", \"numberAuto\":\"" + number_auto + "\"" +
+        ", \"geoLocation\": {\"longitude\":" + longitude.toString() +
+        ", \"latitude\":" + latitude.toString() +
+        "}}";
   }
 }

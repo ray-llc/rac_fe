@@ -24,7 +24,6 @@ import lombok.Setter;
 public class Task extends AbstractNamedEntity {
 
 
-
   @Column(name = "longitude", nullable = false)
   private Double longitude;
 

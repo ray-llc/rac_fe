@@ -35,7 +35,7 @@ public class EquipmentService {
 
   @Transactional
   @CacheEvict(value = "equipments", allEntries = true)
-  public Equipment create(Equipment equipment){
+  public Equipment create(Equipment equipment) {
     Assert.notNull(equipment, "Equipment must not be null");
     return repository.save(equipment);
   }
@@ -72,8 +72,8 @@ public class EquipmentService {
   }
 
   public List<Equipment> getFilter(String ipAddress, String address) {
-    ipAddress = ipAddress == null ? "%%" : "%"+ipAddress+"%";
-    address = address == null ? "%%" : "%"+address+"%";
+    ipAddress = ipAddress == null ? "%%" : "%" + ipAddress + "%";
+    address = address == null ? "%%" : "%" + address + "%";
     return repository.getFilter(ipAddress, address);
   }
 
@@ -85,15 +85,16 @@ public class EquipmentService {
     HttpURLConnection response;
     Integer respCode = 0;
     String respMessage = "";
-    try{
-      response = requestService.postRequest(params, setAction ? "http://localhost:8081/api/gate/open-gate/"+id:"http://localhost:8081/api/gate/close-gate/"+id);
+    try {
+      response = requestService
+          .postRequest(params, setAction ? "http://localhost:8081/api/gate/open-gate/" + id : "http://localhost:8081/api/gate/close-gate/" + id);
       respCode = response.getResponseCode();
       respMessage = response.getResponseMessage();
 
-    } catch ( IOException e) {
+    } catch (IOException e) {
       throw new IllegalRequestDataException(e.getMessage());
-    }finally {
-      if(respCode >= 300) {
+    } finally {
+      if (respCode >= 300) {
         throw new IllegalRequestDataException(respMessage);
       }
     }

@@ -5,13 +5,13 @@ package ru.ray_llc.rac.model;
  **/
 
 import java.io.Serializable;
-import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class GeoLocation implements Serializable {
+
   private Double longitude;
   private Double latitude;
 

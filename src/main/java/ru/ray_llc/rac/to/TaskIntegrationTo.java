@@ -5,8 +5,6 @@ package ru.ray_llc.rac.to;
  **/
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
@@ -15,14 +13,10 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import ru.ray_llc.rac.model.GeoLocation;
-import ru.ray_llc.rac.util.TaskDeserialezer;
 
 @Getter
 @Setter
-//@JsonDeserialize(using = TaskDeserialezer.class)
-public class TaskIntegrationTo extends BaseTo implements Serializable{
-//  @Serial
-//  private static final long serialVersionUID = 442124242332L;
+public class TaskIntegrationTo extends BaseTo implements Serializable {
 
   @NotBlank
   @Size(max = 255)

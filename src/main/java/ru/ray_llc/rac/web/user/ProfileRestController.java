@@ -40,7 +40,7 @@ public class ProfileRestController extends AbstractUserController {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void testPost(@RequestBody String phone) {
 //  public void testPost(@RequestParam("phone") String phone, @RequestParam String text) {
-    System.out.println("{{{"+phone + "}}}");
+    System.out.println("{{{" + phone + "}}}");
   }
 
   @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)

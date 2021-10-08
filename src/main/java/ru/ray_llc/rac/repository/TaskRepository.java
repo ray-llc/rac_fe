@@ -8,6 +8,7 @@ import java.util.List;
 import ru.ray_llc.rac.model.Task;
 
 public interface TaskRepository {
+
   // null if not found, when updated
   Task save(Task task);
 

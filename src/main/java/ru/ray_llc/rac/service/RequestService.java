@@ -4,21 +4,13 @@ package ru.ray_llc.rac.service;
  * @author Alexandr.Yakubov
  **/
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.ray_llc.rac.repository.UserRepository;
-import ru.ray_llc.rac.to.TaskIntegrationTo;
 
 @Service
 public class RequestService {

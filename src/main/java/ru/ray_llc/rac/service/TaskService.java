@@ -88,7 +88,7 @@ public class TaskService {
 
       String responseLine;// = conn.getInputStream().toString();
       StringBuilder response = new StringBuilder();
-      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
       while ((responseLine = bufferedReader.readLine()) != null) {
         response.append(responseLine);
       }

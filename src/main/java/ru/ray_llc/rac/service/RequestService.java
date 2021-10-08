@@ -63,25 +63,6 @@ public class RequestService {
     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     conn.setRequestMethod("GET");
     conn.setDoOutput(true);
-
-
-//    List<TaskIntegrationTo> taskList = new ArrayList(Arrays.asList(taskIntegrationTos));
-//    System.out.println(taskList.size());
-//    List<TaskIntegrationTo> taskIntegrationTos =  mapper.readValue(response.toString().substring(response.toString().indexOf('[')+1, response.toString().lastIndexOf(']')), new TypeReference<List<TaskIntegrationTo>>(){});
-//    System.out.println(taskIntegrationTos.size());
-//    JsonNode matrix =  mapper.readValue(conn.getInputStream(), JsonNode.class);
-
-
-
-//    JSONArray jsonArray = new JSONArray(response.toString());
-//    ArrayList<String> listdata = new ArrayList<String>();
-//    for(int n = 0; n < jsonArray.length(); n++)
-//    {
-//      JSONObject object = jsonArray.getJSONObject(n);
-//      listdata.add(object.optString("nr"));
-//    }
-//    StringBuilder respBody = new StringBuilder();
-
     conn.disconnect();
     return conn;
   }

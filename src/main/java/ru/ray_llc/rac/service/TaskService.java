@@ -4,6 +4,7 @@ package ru.ray_llc.rac.service;
  * @author Alexandr.Yakubov
  **/
 
+import static ru.ray_llc.rac.util.UserUtil.URL_APPL;
 import static ru.ray_llc.rac.util.UserUtil.fromTo;
 import static ru.ray_llc.rac.util.ValidationUtil.checkNotFoundWithId;
 
@@ -83,7 +84,7 @@ public class TaskService {
     List<TaskIntegrationTo> tasks;
     int respCode = 0;
     try {
-      HttpURLConnection conn = requestService.getRequest("http://localhost:8081/api/application/list/ACTIVE");
+      HttpURLConnection conn = requestService.getRequest(URL_APPL+"application/list/ACTIVE");
       respCode = conn.getResponseCode();
 
       String responseLine;

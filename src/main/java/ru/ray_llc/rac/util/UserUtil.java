@@ -11,6 +11,8 @@ import ru.ray_llc.rac.to.UserTo;
 
 public class UserUtil {
 
+  public static final String URL_APPL = "http://localhost:8081/api/";
+
   public static User createNewFromTo(UserTo userTo) {
     return new User(null, userTo.getName(), userTo.getEmail().toLowerCase(), userTo.getPassword(),
         userTo.getLogin(), Role.USER);

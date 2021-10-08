@@ -4,6 +4,7 @@ package ru.ray_llc.rac.service;
  * @author Alexandr.Yakubov
  **/
 
+import static ru.ray_llc.rac.util.UserUtil.URL_APPL;
 import static ru.ray_llc.rac.util.ValidationUtil.checkNotFoundWithId;
 
 import java.io.IOException;
@@ -86,7 +87,7 @@ public class EquipmentService {
     int respCode = 0;
     try {
       HttpURLConnection response = requestService
-          .postRequest(params, setAction ? "http://localhost:8081/api/gate/open-gate/" + id : "http://localhost:8081/api/gate/close-gate/" + id);
+          .postRequest(params, setAction ? URL_APPL+"gate/open-gate/" + id : URL_APPL+"gate/close-gate/" + id);
       respCode = response.getResponseCode();
       System.out.println(response.getResponseMessage());
 

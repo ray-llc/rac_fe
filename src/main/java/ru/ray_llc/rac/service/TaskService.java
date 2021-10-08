@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -80,10 +81,12 @@ public class TaskService {
   //надо подменить источник на Rac-appl
   public List<Task> getAll() {
     List<TaskIntegrationTo> tasks;
+    int respCode = 0;
     try {
       HttpURLConnection conn = requestService.getRequest("http://localhost:8081/api/application/list/ACTIVE");
+      respCode = conn.getResponseCode();
 
-      String responseLine;// = conn.getInputStream().toString();
+      String responseLine;
       StringBuilder response = new StringBuilder();
       BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
       while ((responseLine = bufferedReader.readLine()) != null) {
@@ -97,6 +100,11 @@ public class TaskService {
           });
     } catch (IOException e) {
       throw new IllegalRequestDataException(e.getMessage());
+    } finally {
+      if (respCode >= 300) {
+        throw new IllegalRequestDataException(
+            "Код ошибки " + HttpStatus.valueOf(respCode).value() + " " + HttpStatus.valueOf(respCode).getReasonPhrase());
+      }
     }
     return tasks.stream().map(task -> fromTo(task)).collect(Collectors.toList());
 //    return repository.getAll();

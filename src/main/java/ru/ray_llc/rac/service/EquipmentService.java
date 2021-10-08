@@ -13,6 +13,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -82,20 +83,19 @@ public class EquipmentService {
     Assert.notNull(setAction, "setAction must not be null");
     List<String> params = new ArrayList<>();
     params.add("{}");
-    HttpURLConnection response;
-    Integer respCode = 0;
-    String respMessage = "";
+    int respCode = 0;
     try {
-      response = requestService
+      HttpURLConnection response = requestService
           .postRequest(params, setAction ? "http://localhost:8081/api/gate/open-gate/" + id : "http://localhost:8081/api/gate/close-gate/" + id);
       respCode = response.getResponseCode();
-      respMessage = response.getResponseMessage();
+      System.out.println(response.getResponseMessage());
 
     } catch (IOException e) {
       throw new IllegalRequestDataException(e.getMessage());
     } finally {
       if (respCode >= 300) {
-        throw new IllegalRequestDataException(respMessage);
+        throw new IllegalRequestDataException(
+            "Код ошибки " + HttpStatus.valueOf(respCode).value() + " " + HttpStatus.valueOf(respCode).getReasonPhrase());
       }
     }
   }

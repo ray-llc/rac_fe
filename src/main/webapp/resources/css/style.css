@@ -1,9 +1,9 @@
 tr[data-barrierExcess="false"] {
-  color: red;
+  color: green;
 }
 
 tr[data-barrierExcess="true"] {
-  color: green;
+  color: red;
 }
 
 tr[data-taskExcess="false"] {

@@ -53,10 +53,8 @@
             <thead>
             <tr>
                 <th class="col-1"><spring:message code="barriers.ip_address"/></th>
-                <th class="col-1"><spring:message code="barriers.active"/></th>
-                <th class="col-4"><spring:message code="barriers.address"/></th>
-                <th class="col-1"><spring:message code="barriers.name"/></th>
-                <th class="col-2"><spring:message code="barriers.description"/></th>
+                <th class="col-5"><spring:message code="barriers.address"/></th>
+                <th class="col-3"><spring:message code="barriers.name"/></th>
                 <th class="col-1"></th>
                 <th class="col-1"></th>
                 <th class="col-1"></th>
@@ -80,7 +78,7 @@
             <div class="modal-body">
                 <form id="detailsForm">
                     <input type="hidden" id="id" name="id">
-                    <input type="hidden" id="state" name="state">
+<%--                    <input type="hidden" id="state" name="state">--%>
 
                     <div class="form-group">
                         <div class="row">
@@ -111,19 +109,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="address" class="col-form-label"><spring:message code="barriers.address"/></label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="<spring:message code="barriers.address"/>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description" class="col-form-label"><spring:message code="barriers.name"/></label>
+                        <label for="name" class="col-form-label"><spring:message code="barriers.name"/></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="<spring:message code="barriers.name"/>">
                     </div>
 
                     <div class="form-group">
-                        <label for="description" class="col-form-label"><spring:message code="barriers.description"/></label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="<spring:message code="barriers.description"/>">
+                        <label for="address" class="col-form-label"><spring:message code="barriers.address"/></label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="<spring:message code="barriers.address"/>">
                     </div>
+
+<%--                    <div class="form-group">--%>
+<%--                        <label for="description" class="col-form-label"><spring:message code="barriers.description"/></label>--%>
+<%--                        <input type="text" class="form-control" id="description" name="description" placeholder="<spring:message code="barriers.description"/>">--%>
+<%--                    </div>--%>
+
                     <div id="map" style="width: 470px; height: 370px"></div>
 
                 </form>

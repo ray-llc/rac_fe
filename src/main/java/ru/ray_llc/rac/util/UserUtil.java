@@ -2,9 +2,11 @@ package ru.ray_llc.rac.util;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.StringUtils;
+import ru.ray_llc.rac.model.Equipment;
 import ru.ray_llc.rac.model.Role;
 import ru.ray_llc.rac.model.Task;
 import ru.ray_llc.rac.model.User;
+import ru.ray_llc.rac.to.EquipmentIntegrationTo;
 import ru.ray_llc.rac.to.TaskIntegrationTo;
 import ru.ray_llc.rac.to.TaskTo;
 import ru.ray_llc.rac.to.UserTo;
@@ -34,7 +36,11 @@ public class UserUtil {
 
   public static Task fromTo(TaskIntegrationTo task) {
     return new Task(task.getGeoLocation().getLongitude(), task.getGeoLocation().getLatitude(), task.getAddress(), task.getPhone(),
-        task.getNumberAuto());
+        task.getNumberAuto(), task.getId());
+  }
+
+  public static Equipment fromTo(EquipmentIntegrationTo e) {
+    return new Equipment(e.getId(), e.getName(), e.getIpAddress(), e.isOpen(), e.getAddress(), e.getGeoLocation().getLongitude(), e.getGeoLocation().getLatitude());
   }
 
   public static User updateFromTo(User user, UserTo userTo) {

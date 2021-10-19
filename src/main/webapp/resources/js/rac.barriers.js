@@ -73,24 +73,21 @@ $(function () {
           {
             "data": "ip_address"
           },
-          {
-            "data": "enabled",
-            "render": function (data, type, row) {
-              if (type === "display") {
-                return "<input type='checkbox' " + (data ? "checked" : "")
-                    + " onclick='enable($(this)," + row.id + ");'/>";
-              }
-              return data;
-            }
-          },
+          // {
+          //   "data": "enabled",
+            // "render": function (data, type, row) {
+            //   if (type === "display") {
+            //     return "<input type='checkbox' " + (data ? "checked" : "")
+            //         + " onclick='enable($(this)," + row.id + ");'/>";
+            //   }
+            //   return data;
+            // }
+          // },
           {
             "data": "address"
           },
           {
             "data": "name"
-          },
-          {
-            "data": "description"
           },
           {
             "render": function (data, type, row) {

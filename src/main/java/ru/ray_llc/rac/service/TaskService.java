@@ -56,15 +56,14 @@ public class TaskService {
     Integer respCode = 0;
     String respMessage = "";
     try {
-      response = requestService.postRequest(params, "http://localhost:8081/api/application");
+      response = requestService.postRequest(params, URL_APPL+"application");
       respCode = response.getResponseCode();
-      respMessage = response.getResponseMessage();
 
     } catch (IOException e) {
       throw new IllegalRequestDataException(e.getMessage());
     } finally {
       if (respCode >= 300) {
-        throw new IllegalRequestDataException(respMessage);
+        throw new IllegalRequestDataException(respCode + " " + HttpStatus.valueOf(respCode).getReasonPhrase());
       }
     }
     return taskTo;
@@ -72,7 +71,19 @@ public class TaskService {
 
   @Transactional
   public void delete(int id) {
-    checkNotFoundWithId(repository.delete(id), id);
+    Assert.notNull(id, "Id must not be null");
+    int respCode = 0;
+    try {
+      HttpURLConnection conn = requestService.deletePUTRequest(URL_APPL+"application/close/"+id);
+      respCode = conn.getResponseCode();
+
+    } catch (IOException e) {
+      throw new IllegalRequestDataException(e.getMessage());
+    } finally {
+      if (respCode >= 300) {
+        throw new IllegalRequestDataException(respCode + " " + HttpStatus.valueOf(respCode).getReasonPhrase());
+      }
+    }
   }
 
   public Task get(int id) {
@@ -94,6 +105,8 @@ public class TaskService {
         response.append(responseLine);
       }
       bufferedReader.close();
+
+      System.out.println(response.substring(response.toString().indexOf('['), response.toString().lastIndexOf(']') + 1));
 
       ObjectMapper mapper = new ObjectMapper();
       tasks = mapper.readValue(response.substring(response.toString().indexOf('['), response.toString().lastIndexOf(']') + 1),

@@ -47,12 +47,13 @@ function updateTableByData(data) {
 
 function save() {
   const form = $("#detailsForm");
+  $("#editRow").modal("hide");
   $.ajax({
     type: "POST",
     url: ctx.ajaxUrl,
     data: form.serialize()
   }).done(function () {
-    $("#editRow").modal("hide");
+//    $("#editRow").modal("hide");
     ctx.updateTable();
     successNoty("common.saved");
   });

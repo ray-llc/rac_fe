@@ -22,10 +22,11 @@
         <table class="table table-hover " id="datatable">
             <thead>
             <tr>
-                <th><spring:message code="tasks.address"/></th>
-                <th><spring:message code="tasks.number_auto"/></th>
-                <th><spring:message code="tasks.phone"/></th>
-                <th><spring:message code="tasks.registered"/></th>
+                <th class="col-4"><spring:message code="tasks.address"/></th>
+                <th class="col-1"><spring:message code="tasks.number_auto"/></th>
+                <th class="col-1"><spring:message code="tasks.phone"/></th>
+                <th class="col-2"><spring:message code="tasks.registered"/></th>
+                <th class="col-1"></th>
             </tr>
             </thead>
         </table>
@@ -101,7 +102,7 @@
                     <span class="fa fa-close"></span>
                     <spring:message code="common.cancel"/>
                 </button>
-                <button type="button" class="btn btn-primary" onclick="save()">
+                <button type="button" class="btn btn-primary" onclick="save()" id="addButton">
                     <span class="fa fa-check"></span>
                     <spring:message code="common.save"/>
                 </button>

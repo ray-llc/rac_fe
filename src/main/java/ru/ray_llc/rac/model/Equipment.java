@@ -58,14 +58,13 @@ public class Equipment extends AbstractNamedEntity {
   @Column(name = "latitude", nullable = false)
   private Double latitude;
 
-  @Column(name = "description", nullable = false)
-  @NotBlank
+  @Column(name = "description")
   @Size(max = 255)
   private String description;
 
-  @Column(name = "state", nullable = false, columnDefinition = "bool default true")
+  @Column(name = "state", columnDefinition = "bool default true")
   @JsonView(View.JsonUI.class)
-  private boolean state;
+  private boolean state = true;
 
   @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
   @NotNull
@@ -84,6 +83,17 @@ public class Equipment extends AbstractNamedEntity {
   public Equipment() {
   }
 
+  public Equipment(Integer id, String name, String ip_address, boolean state, String address, Double longitude, Double latitude) {
+    super.setId(id);
+    this.name = name;
+    this.address=address;
+    this.ip_address=ip_address;
+    this.state=state;
+    this.longitude=longitude;
+    this.latitude=latitude;
+  }
+
+
   @Override
   public String toString() {
     return "Equipment{" +
@@ -98,6 +108,17 @@ public class Equipment extends AbstractNamedEntity {
         ", description=" + description +
         ", gpio=" + gpio +
         '}';
+  }
+
+  public String toStringForPost(){
+    return "{" +
+        "\"id\":"+ id +
+        ", \"name\":\"" + name +
+        "\", \"address\":\"" + address +
+        "\", \"ipAddress\":\"" + ip_address +
+        "\", \"geoLocation\":{\"longitude\":" + longitude.toString() +
+        ", \"latitude\":" + latitude.toString() +
+        "}}";
   }
 
 }

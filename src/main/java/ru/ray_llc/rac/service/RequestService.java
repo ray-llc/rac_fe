@@ -31,19 +31,15 @@ public class RequestService {
       }
       postData.append(item);
     }
-
-    System.out.println(postData);
     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     conn.setRequestMethod("POST");
     conn.setRequestProperty("Content-Type", "application/json");
     conn.setDoOutput(true);
     if (postData.length() > 0) {
-//      postData.append("]");
       byte[] postDataBytes = postData.toString().getBytes(StandardCharsets.UTF_8);
       conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
       conn.getOutputStream().write(postDataBytes);
     }
-    System.out.println(conn.getResponseCode());
     conn.disconnect();
     return conn;
   }
@@ -58,4 +54,57 @@ public class RequestService {
     conn.disconnect();
     return conn;
   }
+
+  //http://localhost:8081/api/application/close/{id}
+  public HttpURLConnection deletePUTRequest(String getPath) throws IOException {
+    URL url = new URL(getPath);
+    url.toString().replace(url.getPath(), "");
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    conn.setRequestMethod("PUT");
+    conn.setDoOutput(true);
+    conn.disconnect();
+    return conn;
+  }
+
+  //http://localhost:8081/api/application/close/{id}
+  public HttpURLConnection deleteRequest(String getPath) throws IOException {
+    URL url = new URL(getPath);
+    url.toString().replace(url.getPath(), "");
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    conn.setRequestMethod("DELETE");
+    conn.setDoOutput(true);
+    conn.disconnect();
+    return conn;
+  }
+
+
+  //http://localhost:8081/api/application/list/ACTIVE
+  public HttpURLConnection putRequest(List<String> params, String postPath) throws IOException {
+    URL url = new URL(postPath);
+
+    url.toString().replace(url.getPath(), "");
+    StringBuilder postData = new StringBuilder();
+
+    for (String item : params) {
+      if (postData.length() > 0) {
+        postData.append(",");
+      }
+      postData.append(item);
+    }
+
+    System.out.println(postData.toString());
+
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    conn.setRequestMethod("PUT");
+    conn.setRequestProperty("Content-Type", "application/json");
+    conn.setDoOutput(true);
+    if (postData.length() > 0) {
+      byte[] postDataBytes = postData.toString().getBytes(StandardCharsets.UTF_8);
+      conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+      conn.getOutputStream().write(postDataBytes);
+    }
+    conn.disconnect();
+    return conn;
+  }
+
 }

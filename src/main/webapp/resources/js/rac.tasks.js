@@ -37,41 +37,46 @@ $.ajaxSetup({
 $(function () {
   makeEditable(
       $("#datatable").DataTable({
-    "ajax": {
-      "url": taskAjaxUrl,
-      "dataSrc": ""
-    },
-    "paging": false,
-    "info": true,
-    "columns": [
-      {
-        "data": "address"
-      },
-      {
-        "data": "number_auto"
-      },
-      {
-        "data": "phone"
-      },
-      {
-        "data": "registered",
-        "render": function (date, type, row) {
-          if (type === "display") {
-            return date.substring(0, 19).replace("T", " ");
+        "ajax": {
+          "url": taskAjaxUrl,
+          "dataSrc": ""
+        },
+        "paging": false,
+        "info": true,
+        "columns": [
+          {
+            "data": "address"
+          },
+          {
+            "data": "number_auto"
+          },
+          {
+            "data": "phone"
+          },
+          {
+            "data": "registered",
+            "render": function (date, type, row) {
+              if (type === "display") {
+                return date.substring(0, 19).replace("T", " ");
+              }
+              return date;
+            }
+          },
+          {
+            "render": renderDeleteBtn,
+            "defaultContent": "",
+            "orderable": false
           }
-          return date;
+        ],
+        "order": [
+          [
+            0,
+            "desc"
+          ]
+        ],
+        "createdRow": function (row, data, dataIndex) {
+          $(row).attr("data-taskExcess", data.state);
         }
-      }
-    ],
-    "order": [
-      [
-        0,
-        "desc"
-      ]
-    ],
-    "createdRow": function (row, data, dataIndex) {
-      $(row).attr("data-taskExcess", data.state);
-    }
-  })
-);
+      })
+  );
 });

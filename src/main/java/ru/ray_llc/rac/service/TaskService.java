@@ -121,7 +121,6 @@ public class TaskService {
       }
     }
     return tasks.stream().map(task -> fromTo(task)).collect(Collectors.toList());
-//    return repository.getAll();
   }
 
   @Transactional

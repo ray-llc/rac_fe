@@ -30,6 +30,11 @@ public class RootController {
     return "barriers";
   }
 
+  @GetMapping("/barriers_map")
+  public String getBarriersMap() {
+    return "barriers_map";
+  }
+
   @GetMapping("/addcase")
   public String getAddcase(ModelMap model) {
     model.addAttribute("taskTo", new Task());

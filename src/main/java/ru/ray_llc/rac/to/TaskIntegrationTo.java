@@ -49,8 +49,8 @@ public class TaskIntegrationTo extends BaseTo implements Serializable {
   @JsonIgnore
   private Date closed;
 
-  @JsonIgnore
-  private Set<Object> gateCollection;
+//    @JsonIgnore
+  private Set<EquipmentIntegrationTo> gateCollection;
 
   public TaskIntegrationTo() {
   }

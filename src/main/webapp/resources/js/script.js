@@ -7,8 +7,8 @@ var map;
 function init () {
 
   map = new ymaps.Map("map", {
-    center: [45.03912, 38.981502],
-    zoom: 12
+    center: [45.018633, 38.962237],
+    zoom: 15
   }, {
     searchControlProvider: 'yandex#search'
   });
@@ -59,14 +59,38 @@ function setLableFromEditBarriers() {
 
 }
 
-function setLable(lat, lon, nbr_auto) {
+function setLable(lat, lon, nbr_auto, enable) {
+  if(enable) {
+    var prst = 'islands#darkGreenDotIcon';
+  } else {
+    var prst = 'islands#redDotIcon';
+  }
   ymaps.ready(function(){
     var myPlacemark = new ymaps.Placemark([lat, lon], {
       iconCaption: nbr_auto
     }, {
-      preset: 'islands#pinkDotIcon'
+      preset: prst
     });
     map.geoObjects.add(myPlacemark);
+  })
+}
+
+function setBaloon(lat, lon, name, enable) {
+  if(enable) {
+    var set_color = '"color: green;"';
+    var state = 'открыт';
+  } else {
+    var set_color = '"color: red;"';
+    var state = 'закрыт';
+  }
+  ymaps.ready(function(){
+    var myPlacemark = new ymaps.Placemark([lat, lon], {
+      balloonContentHeader: '<span class="description" style='+set_color+' >'+name+'</span>',
+      // Зададим содержимое основной части балуна.
+      balloonContentBody: '<b>'+state+'</b>'
+    });
+    map.geoObjects.add(myPlacemark);
+    myPlacemark.balloon.open();
   })
 }
 

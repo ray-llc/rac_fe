@@ -1,3 +1,4 @@
+<%@ page import = "java.io.*" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -38,6 +39,10 @@
         </div>
     </div>
 </div>
+<%
+    // Set refresh, autoload time as 5 seconds
+    response.setIntHeader("Refresh", 10);
+%>
 
 <script src='https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=7821f2d1-fcc4-42b5-af8e-dfecc28a3beb'></script>
 <script type="text/javascript" src="resources/js/rac.maps.js" defer></script>

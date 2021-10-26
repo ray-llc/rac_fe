@@ -12,7 +12,7 @@
                     <a class="btn btn-info mr-1" href="users"><spring:message code="user.title"/></a>
                 </sec:authorize>
                 <sec:authorize access="hasRole('USER')">
-                    <a class="btn btn-info mr-1" href="addcase"><spring:message code="app.addcase"/></a>
+                    <a class="btn btn-info mr-1" href="barriers_map"><spring:message code="app.addcase"/></a>
                 </sec:authorize>
                 <a class="btn btn-info mr-1" href="tasks"><spring:message code="app.task"/></a>
                 <a class="btn btn-info mr-1" href="barriers"><spring:message code="app.barriers"/></a>

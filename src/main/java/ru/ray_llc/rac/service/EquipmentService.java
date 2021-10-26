@@ -53,7 +53,7 @@ public class EquipmentService {
     HttpURLConnection response;
     Integer respCode = 0;
     try {
-      response = requestService.postRequest(params, URL_APPL + "gate?diameter=150");
+      response = requestService.postRequest(params, URL_APPL + "gate?diameter=200");
       respCode = response.getResponseCode();
 
     } catch (IOException e) {
@@ -63,7 +63,8 @@ public class EquipmentService {
         throw new IllegalRequestDataException(respCode + " " + HttpStatus.valueOf(respCode).getReasonPhrase());
       }
     }
-    return repository.save(equipment);
+    return equipment;
+//    return repository.save(equipment);
   }
 
   @Transactional
@@ -161,7 +162,7 @@ public class EquipmentService {
     HttpURLConnection response;
     Integer respCode = 0;
     try {
-      response = requestService.putRequest(params, URL_APPL + "gate/"+equipment.getId()+"?diameter=150");
+      response = requestService.putRequest(params, URL_APPL + "gate/"+equipment.getId()+"?diameter=200");
       respCode = response.getResponseCode();
 
     } catch (IOException e) {
@@ -198,7 +199,7 @@ public class EquipmentService {
     int respCode = 0;
     try {
       HttpURLConnection response = requestService
-          .postRequest(params, setAction ? URL_APPL + "gate/open-gate/" + id : URL_APPL + "gate/close-gate/" + id);
+          .postRequest(params, setAction ? (URL_APPL + "gate/open-gate/" + id) : (URL_APPL + "gate/close-gate/" + id));
       respCode = response.getResponseCode();
       System.out.println(response.getResponseMessage());
 

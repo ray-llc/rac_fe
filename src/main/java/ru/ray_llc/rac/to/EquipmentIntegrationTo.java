@@ -54,6 +54,15 @@ public class EquipmentIntegrationTo extends  BaseTo implements Serializable {
     this.geoLocation = geoLocation;
   }
 
+  public EquipmentIntegrationTo(Integer id, String name, String ipAddress, boolean open, String address, GeoLocation geoLocation) {
+    super(id);
+    this.name = name;
+    this.ipAddress = ipAddress;
+    this.open = open;
+    this.address = address;
+    this.geoLocation = geoLocation;
+  }
+
   @Override
   public String toString() {
     return "{" +

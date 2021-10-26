@@ -36,7 +36,7 @@ public class UserUtil {
 
   public static Task fromTo(TaskIntegrationTo task) {
     return new Task(task.getGeoLocation().getLongitude(), task.getGeoLocation().getLatitude(), task.getAddress(), task.getPhone(),
-        task.getNumberAuto(), task.getId());
+        task.getNumberAuto(), task.getId(), task.getGateCollection().stream().filter(gate -> gate.isOpen()).findFirst().isPresent());
   }
 
   public static Equipment fromTo(EquipmentIntegrationTo e) {

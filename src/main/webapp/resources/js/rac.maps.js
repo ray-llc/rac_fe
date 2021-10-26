@@ -68,7 +68,7 @@ $(function () {
         ],
         "createdRow": function (row, data, dataIndex) {
           $(row).attr("data-taskExcess", data.state);
-          setLable(data.latitude, data.longitude, data.number_auto);
+          setLable(data.latitude, data.longitude, data.number_auto, data.enabled);
         }
       })
   );

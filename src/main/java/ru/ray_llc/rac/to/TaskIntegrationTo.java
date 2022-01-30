@@ -7,7 +7,6 @@ package ru.ray_llc.rac.to;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 import javax.validation.constraints.NotBlank;
@@ -51,6 +50,8 @@ public class TaskIntegrationTo extends BaseTo implements Serializable {
 
 //    @JsonIgnore
   private Set<EquipmentIntegrationTo> gateCollection;
+
+  private Set<AvtoTo> equipmentCollection;
 
   public TaskIntegrationTo() {
   }

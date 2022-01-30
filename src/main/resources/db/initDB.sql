@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS gpio;
 DROP TABLE IF EXISTS equipments;
 DROP TABLE IF EXISTS tasks;
+--DROP TABLE IF EXISTS avto;
 
 DROP SEQUENCE IF EXISTS global_seq;
 
@@ -78,3 +79,17 @@ CREATE TABLE tasks
     CONSTRAINT tasks_pkey PRIMARY KEY (id),
     CONSTRAINT tasks_unique_number_auto_address_idx UNIQUE (number_auto, address)
 );
+
+/*
+create table if not exists avto
+(
+    id          bigserial             not null
+        CONSTRAINT avto_pkey
+            primary key,
+    name        varchar               not null,
+    plate       varchar               not null,
+    mileage     double precision              not null,
+    engine_hours  double precision not null
+);
+
+ */

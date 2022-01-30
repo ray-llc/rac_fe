@@ -6,6 +6,7 @@ package ru.ray_llc.rac.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -53,6 +54,8 @@ public class Task extends AbstractNamedEntity {
   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private Date registered = new Date();
 
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+  transient private Set<Avto>  avtos;
 
   public Task() {
   }

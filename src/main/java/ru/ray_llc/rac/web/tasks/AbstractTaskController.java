@@ -12,8 +12,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.ray_llc.rac.model.GeoLocation;
 import ru.ray_llc.rac.model.Task;
 import ru.ray_llc.rac.service.TaskService;
+import ru.ray_llc.rac.to.CarLocationModelTo;
 import ru.ray_llc.rac.to.TaskTo;
 import ru.ray_llc.rac.web.SecurityUtil;
 
@@ -39,8 +41,28 @@ public abstract class AbstractTaskController {
   public List<Task> getAll() {
     int userId = SecurityUtil.authUserId();
     log.info("getAll for user {}", userId);
-    return service.getAll();
+
+    List<Task> tasks = service.getAll();
+
+    for (Task task : tasks) {
+      task.getAvtos().forEach(auto -> {
+        CarLocationModelTo location = getCarLocation(auto.getId());
+        if (location != null) {
+          GeoLocation geoLocation = new GeoLocation(location.getLocation().getLongitude(), location.getLocation().getLatitude());
+          auto.setGeoLocation(geoLocation);
+        }
+      });
+    }
+
+    return tasks;
   }
+
+  public CarLocationModelTo getCarLocation(int id) {
+    int userId = SecurityUtil.authUserId();
+    log.info("getCarLocation for user {}", userId);
+    return service.getCarLocation(id);
+  }
+
 
   public Task create(TaskTo task) {
     int userId = SecurityUtil.authUserId();

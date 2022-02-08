@@ -68,7 +68,10 @@ $(function () {
         ],
         "createdRow": function (row, data, dataIndex) {
           $(row).attr("data-taskExcess", data.state);
-          setLable(data.latitude, data.longitude, data.number_auto, data.enabled);
+          data.avtos.forEach(function(entry) {
+            setLable(entry.geoLocation.latitude, entry.geoLocation.longitude, entry.name, data.enabled);
+          });
+          setLable(data.latitude, data.longitude, data.address, data.enabled);
         }
       })
   );

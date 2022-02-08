@@ -1,11 +1,14 @@
 package ru.ray_llc.rac.util;
 
+import java.util.stream.Collectors;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.StringUtils;
+import ru.ray_llc.rac.model.Avto;
 import ru.ray_llc.rac.model.Equipment;
 import ru.ray_llc.rac.model.Role;
 import ru.ray_llc.rac.model.Task;
 import ru.ray_llc.rac.model.User;
+import ru.ray_llc.rac.to.AvtoTo;
 import ru.ray_llc.rac.to.EquipmentIntegrationTo;
 import ru.ray_llc.rac.to.TaskIntegrationTo;
 import ru.ray_llc.rac.to.TaskTo;
@@ -34,9 +37,14 @@ public class UserUtil {
         task.getNumber_auto());
   }
 
+  public static Avto fromTo(AvtoTo avtoTo) {
+    return new Avto(avtoTo.getId(), avtoTo.getName(), avtoTo.getPlate(), avtoTo.getMileage(), avtoTo.getEngine_hours(), null);
+  }
+
   public static Task fromTo(TaskIntegrationTo task) {
     return new Task(task.getGeoLocation().getLongitude(), task.getGeoLocation().getLatitude(), task.getAddress(), task.getPhone(),
-        task.getNumberAuto(), task.getId(), task.getGateCollection().stream().filter(gate -> gate.isOpen()).findFirst().isPresent());
+        task.getNumberAuto(), task.getId(), task.getGateCollection().stream().filter(gate -> gate.isOpen()).findFirst().isPresent(),
+        task.getEquipmentCollection().stream().map(auto -> fromTo(auto)).collect(Collectors.toSet()));
   }
 
   public static Equipment fromTo(EquipmentIntegrationTo e) {

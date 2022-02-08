@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.ray_llc.rac.model.Task;
 import ru.ray_llc.rac.repository.TaskRepository;
+import ru.ray_llc.rac.to.CarLocationModelTo;
 import ru.ray_llc.rac.to.TaskIntegrationTo;
 import ru.ray_llc.rac.to.TaskTo;
 import ru.ray_llc.rac.util.exception.IllegalRequestDataException;
@@ -56,7 +57,7 @@ public class TaskService {
     Integer respCode = 0;
     String respMessage = "";
     try {
-      response = requestService.postRequest(params, URL_APPL+"application");
+      response = requestService.postRequest(params, URL_APPL + "application");
       respCode = response.getResponseCode();
 
     } catch (IOException e) {
@@ -74,7 +75,7 @@ public class TaskService {
     Assert.notNull(id, "Id must not be null");
     int respCode = 0;
     try {
-      HttpURLConnection conn = requestService.deletePUTRequest(URL_APPL+"application/close/"+id);
+      HttpURLConnection conn = requestService.deletePUTRequest(URL_APPL + "application/close/" + id);
       respCode = conn.getResponseCode();
 
     } catch (IOException e) {
@@ -91,11 +92,46 @@ public class TaskService {
   }
 
   //надо подменить источник на Rac-appl
+  public CarLocationModelTo getCarLocation(int carId) {
+    CarLocationModelTo carLocation = null;
+    int respCode = 0;
+    try {
+      HttpURLConnection conn = requestService.getRequest(URL_APPL + "/location/car/" + carId);
+      respCode = conn.getResponseCode();
+
+      String responseLine;
+      StringBuilder response = new StringBuilder();
+      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
+      while ((responseLine = bufferedReader.readLine()) != null) {
+        response.append(responseLine);
+      }
+      bufferedReader.close();
+
+      if (!response.toString().equals("")) {
+        System.out.println(response);
+
+        ObjectMapper mapper = new ObjectMapper();
+//        mapper.registerModule(new JavaTimeModule());
+        carLocation = mapper.readValue(response.toString(), new TypeReference<CarLocationModelTo>() {
+        });
+      }
+    } catch (IOException e) {
+      throw new IllegalRequestDataException(e.getMessage());
+    } finally {
+      if (respCode >= 300) {
+        throw new IllegalRequestDataException(
+            "Код ошибки " + HttpStatus.valueOf(respCode).value() + " " + HttpStatus.valueOf(respCode).getReasonPhrase());
+      }
+    }
+    return carLocation;
+  }
+
+  //надо подменить источник на Rac-appl
   public List<Task> getAll() {
     List<TaskIntegrationTo> tasks;
     int respCode = 0;
     try {
-      HttpURLConnection conn = requestService.getRequest(URL_APPL+"application/list/ACTIVE");
+      HttpURLConnection conn = requestService.getRequest(URL_APPL + "application/list/ACTIVE");
       respCode = conn.getResponseCode();
 
       String responseLine;

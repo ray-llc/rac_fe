@@ -30,6 +30,8 @@ public class TaskUIController extends AbstractTaskController {
   @GetMapping
   @JsonView(View.JsonUI.class)
   public List<Task> getAll() {
+
+
     return super.getAll();
   }
 

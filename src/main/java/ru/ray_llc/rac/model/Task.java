@@ -69,6 +69,17 @@ public class Task extends AbstractNamedEntity {
     this.name = "инциндент";
   }
 
+  public Task(Double longitude, Double latitude, String address, String phone, String number_auto, Integer id, boolean enabled, Set<Avto> autos) {
+    super.setId(id);
+    this.longitude = longitude;
+    this.latitude = latitude;
+    this.address = address;
+    this.phone = phone;
+    this.number_auto = number_auto;
+    this.name = "инциндент";
+    this.enabled = enabled;
+    this.avtos = autos;
+  }
 
   public Task(Double longitude, Double latitude, String address, String phone, String number_auto, Integer id, boolean enabled) {
     super.setId(id);

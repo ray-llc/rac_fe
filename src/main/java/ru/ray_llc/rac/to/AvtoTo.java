@@ -16,7 +16,7 @@ public class AvtoTo extends BaseTo implements Serializable{
 
   @NotBlank
   @Size(min = 2, max = 100)
-  protected String name = "RU22w";
+  protected String name;
 
   @NotBlank
   @Size(min = 2, max = 100)
